@@ -1,0 +1,864 @@
+/* Airbnb-Style Marketplace CSS - Professional Edition */
+
+:root {
+    --airbnb-red: #FF385C;
+    --airbnb-red-dark: #E31C5F;
+    --airbnb-teal: #00A699;
+    --text-primary: #222222;
+    --text-secondary: #717171;
+    --border-gray: #DDDDDD;
+    --background-gray: #F7F7F7;
+    --black: #000000;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.5;
+    background-color: var(--white);
+}
+
+/* Airbnb Header */
+.airbnb-header {
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-gray);
+    z-index: 100;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.header-container {
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--airbnb-red);
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logo svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--airbnb-red);
+}
+
+/* Search Bar - Airbnb Style */
+.search-bar-main {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-gray);
+    border-radius: 40px;
+    padding: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0);
+    transition: box-shadow 0.2s;
+    background: white;
+    flex: 1;
+    max-width: 850px;
+}
+
+.search-bar-main:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
+
+.search-field-compact {
+    flex: 1;
+    padding: 8px 16px;
+    border-right: 1px solid var(--border-gray);
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: 32px;
+}
+
+.search-field-compact:last-of-type {
+    border-right: none;
+    padding-right: 0;
+}
+
+.search-field-compact:hover {
+    background: var(--background-gray);
+}
+
+.search-field-compact label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.search-field-compact input,
+.search-field-compact select {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: var(--text-secondary);
+    background: transparent;
+    width: 100%;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.search-field-compact input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-btn-icon {
+    background: var(--airbnb-red);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.search-btn-icon:hover {
+    background: var(--airbnb-red-dark);
+}
+
+/* Search Modal/Expanded */
+.search-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    display: none;
+    animation: fadeIn 0.2s;
+}
+
+.search-modal-overlay.active {
+    display: block;
+}
+
+.search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 201;
+    padding: 20px 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+}
+
+.search-modal.active {
+    transform: translateY(0);
+}
+
+.search-modal-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.search-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.search-modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.search-fields-expanded {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 0;
+    border: 1px solid var(--border-gray);
+    border-radius: 48px;
+    padding: 8px;
+    background: white;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.search-field-expanded {
+    padding: 16px 24px;
+    border-right: 1px solid var(--border-gray);
+}
+
+.search-field-expanded:last-of-type {
+    border-right: none;
+}
+
+.search-field-expanded label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.search-field-expanded input,
+.search-field-expanded select {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: transparent;
+    padding: 4px 0;
+}
+
+/* User Menu */
+.user-menu-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.become-host-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 22px;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.become-host-link:hover {
+    background: var(--background-gray);
+}
+
+.user-menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 6px 6px 12px;
+    border: 1px solid var(--border-gray);
+    border-radius: 21px;
+    background: var(--white);
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.user-menu-btn:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.18);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Hero Section */
+.hero-airbnb {
+    position: relative;
+    height: 70vh;
+    min-height: 600px;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 40px;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 24px;
+    margin-bottom: 0;
+    opacity: 0.95;
+}
+
+/* Cities Section */
+.cities-section {
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 48px 40px;
+}
+
+.section-header {
+    margin-bottom: 32px;
+}
+
+.section-header h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.city-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.city-card:hover {
+    transform: scale(1.03);
+}
+
+.city-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+.city-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.city-distance {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Listings Section */
+.listings-section {
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+}
+
+.listings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.listings-header h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.listings-count {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 24px;
+}
+
+/* Listing Card */
+.listing-card-airbnb {
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.listing-card-airbnb:hover {
+    transform: scale(1.02);
+}
+
+.listing-image-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    aspect-ratio: 1 / 1;
+}
+
+.listing-image-airbnb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wishlist-btn-airbnb {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 10;
+}
+
+.wishlist-btn-airbnb:hover {
+    transform: scale(1.1);
+    background: white;
+}
+
+.listing-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.listing-location {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.listing-type {
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+.listing-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.rating-star {
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+.rating-value {
+    font-weight: 600;
+}
+
+.listing-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.listing-price-airbnb {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.listing-price-unit {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+/* Balance Banner */
+.balance-banner {
+    max-width: 1760px;
+    margin: 0 auto 24px;
+    padding: 0 40px;
+}
+
+.balance-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 32px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.balance-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.balance-icon {
+    font-size: 32px;
+}
+
+.balance-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.balance-label {
+    font-size: 14px;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.balance-amount {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.balance-action {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.balance-action:hover {
+    background: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* Footer */
+.footer-airbnb {
+    background: var(--background-gray);
+    border-top: 1px solid var(--border-gray);
+    padding: 48px 0 24px;
+}
+
+.footer-container {
+    max-width: 1760px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 32px;
+}
+
+.footer-section h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    font-size: 14px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-gray);
+    font-size: 14px;
+}
+
+.footer-bottom-left {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.footer-bottom-left a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.footer-bottom-left a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.footer-social a {
+    color: var(--text-primary);
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.footer-social a:hover {
+    color: var(--text-secondary);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 80px 40px;
+}
+
+.empty-state-icon {
+    font-size: 64px;
+    color: var(--border-gray);
+    margin-bottom: 24px;
+}
+
+.empty-state h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.empty-state p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+/* CTA Section */
+.cta-section {
+    max-width: 1760px;
+    margin: 0 auto 80px;
+    padding: 0 40px;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 64px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.cta-card h2 {
+    font-size: 40px;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.cta-card p {
+    font-size: 20px;
+    margin-bottom: 32px;
+    opacity: 0.95;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-cta-primary {
+    background: white;
+    color: #667eea;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.btn-cta-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-cta-secondary {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 16px;
+    border: 2px solid white;
+    transition: background 0.2s;
+}
+
+.btn-cta-secondary:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+    .listings-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .cities-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 960px) {
+    .listings-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .search-fields-expanded {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 16px 24px;
+    }
+    
+    .search-bar-main {
+        flex: 1;
+    }
+    
+    .become-host-link span {
+        display: none;
+    }
+    
+    .hero-airbnb {
+        height: 50vh;
+        min-height: 400px;
+    }
+    
+    .hero-content h1 {
+        font-size: 36px;
+    }
+    
+    .hero-content p {
+        font-size: 18px;
+    }
+    
+    .cities-section,
+    .listings-section {
+        padding: 32px 24px;
+    }
+    
+    .listings-grid,
+    .cities-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .cta-card {
+        padding: 40px 32px;
+    }
+    
+    .cta-card h2 {
+        font-size: 28px;
+    }
+    
+    .cta-card p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo span {
+        display: none;
+    }
+    
+    .user-menu-btn {
+        padding: 6px;
+        gap: 0;
+    }
+    
+    .search-field-compact {
+        padding: 6px 12px;
+    }
+    
+    .search-field-compact label {
+        font-size: 10px;
+    }
+    
+    .search-field-compact input {
+        font-size: 12px;
+    }
+}
